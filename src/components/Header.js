@@ -1,10 +1,11 @@
-import "./header.css"
+import "./Header.css"
+import { LOGO_URL } from "./util/url";
 
 const Header = () => {
   return (
     <div className="Header-container">
       <div className="logo">
-        <img src="https://png.pngtree.com/png-clipart/20200727/original/pngtree-restaurant-logo-design-vector-template-png-image_5441058.jpg" alt="logo" />
+        <img src={LOGO_URL} alt="logo" />
       </div>
       <div className="list-item">
         <ul>

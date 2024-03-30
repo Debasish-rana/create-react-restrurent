@@ -1,0 +1,18 @@
+.card-container {
+  margin: 10px;
+}
+.res-card {
+  border-radius: 10px;
+  padding: 20px;
+  width: 190px;
+  height: auto;
+  background-color: #e6e6e6e6;
+}
+.res-card:hover {
+  border: 2px solid black;
+}
+
+.res-card img {
+  width: 180px;
+  height: 150px;
+}
