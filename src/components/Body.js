@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestroCard from "./RestroCard";
+import Shimer from "./ShimerUi";
 import "./Body.css";
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -19,6 +20,9 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  if (resList.length === 0) {
+    return <Shimer/>
+  }
   return (
     <div className="body">
       <div className="res-container">
