@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RestroCard from "./RestroCard";
 import Shimer from "./ShimerUi";
-import "./Body.css";
+
 const Body = () => {
   const [resList, setResList] = useState([]);
   useEffect(() => {
@@ -25,7 +25,7 @@ const Body = () => {
   }
   return (
     <div className="body">
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {resList.map((restrurant) => (
           <RestroCard key={restrurant.info.id} resDeta={restrurant}/>
           ))}

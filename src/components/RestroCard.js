@@ -1,4 +1,4 @@
-import "./RestroCard.css";
+
 import { CDN_URL } from "./util/url";
 const RestroCard = (props) => {
 const { resDeta } = props;
@@ -14,10 +14,10 @@ const {
 } = resDeta?.info
 
   return (
-    <div className="card-container">
+    <div className="card-container w-[235px] h-[390px] bg-green-100 m-2 p-4 rounded-xl shadow-xl">
       <div className="res-card">
-      <img className="image" alt="cdn"src={CDN_URL + resDeta.info.cloudinaryImageId} />
-        <h3>{name}</h3>
+      <img className="image w-[210px] h-[130px] rounded-xl shadow-2xl" alt="cdn"src={CDN_URL + cloudinaryImageId} />
+        <h3 className="font-bold mb-1">{name}</h3>
         <h4>{cuisines.join(", ")}</h4>
         <h4>{avgRating} </h4>
         <h4>{locality} </h4>
