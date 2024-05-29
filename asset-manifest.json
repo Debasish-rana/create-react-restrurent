@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/create-react-restrurent/static/css/main.ac72a7e3.css",
-    "main.js": "/create-react-restrurent/static/js/main.ec4607a3.js",
-    "static/js/453.68548013.chunk.js": "/create-react-restrurent/static/js/453.68548013.chunk.js",
+    "main.css": "/create-react-restrurent/static/css/main.fbff919b.css",
+    "main.js": "/create-react-restrurent/static/js/main.5b72d303.js",
     "index.html": "/create-react-restrurent/index.html",
-    "main.ac72a7e3.css.map": "/create-react-restrurent/static/css/main.ac72a7e3.css.map",
-    "main.ec4607a3.js.map": "/create-react-restrurent/static/js/main.ec4607a3.js.map",
-    "453.68548013.chunk.js.map": "/create-react-restrurent/static/js/453.68548013.chunk.js.map"
+    "main.fbff919b.css.map": "/create-react-restrurent/static/css/main.fbff919b.css.map",
+    "main.5b72d303.js.map": "/create-react-restrurent/static/js/main.5b72d303.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac72a7e3.css",
-    "static/js/main.ec4607a3.js"
+    "static/css/main.fbff919b.css",
+    "static/js/main.5b72d303.js"
   ]
 }
