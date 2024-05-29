@@ -1,17 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "./App.css";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import { Outlet, RouterProvider, createBrowserRouter  } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import About from "./components/About";
+import Contact from "./Contact";
+import Error from "./Error";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App() {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  );
+}
+
+const appRouter = createBrowserRouter([
+   
+   {
+    path:"/create-react-restrurent",
+    element:<App/>,
+    children:[ 
+      {
+        path:"/create-react-restrurent/",
+    element:<Body/>
+      },
+      {
+        path:"/create-react-restrurent/home",
+        element:<Body/>
+      },
+      {
+      path:"/create-react-restrurent/about",
+      element:<About />
+     },
+     {
+      path:"/create-react-restrurent/cotact",
+      element:<Contact />
+     }]
+   },
+  {
+
+    path:"/create-react-restrurent/error",
+    element:<Error />
+  }
+])
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter}/>);

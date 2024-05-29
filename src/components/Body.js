@@ -4,6 +4,8 @@ import Shimer from "./ShimerUi";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
+  const [filterList, setfilterList] = useState([]);
+  const [searchText, setsearchText] = useState("")
   useEffect(() => {
     resApi();
   }, []);
@@ -19,16 +21,56 @@ const Body = () => {
     setResList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setfilterList(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
   if (resList.length === 0) {
-    return <Shimer/>
+    return <Shimer />;
   }
   return (
     <div className="body">
+      <div className="flex justify-between ml-28 mr-28 m-2">
+        <div className="flex justify-between gap-4">
+          <input
+            type="text"
+            className="border-2 border-black rounded-3xl p-2"
+            value={searchText}
+           
+            onChange={(e)=>{
+              setsearchText(e.target.value)
+              
+            }}
+          />
+          <button className="bg-sky-300 p-2 rounded-3xl w-28"
+          onClick={()=>{
+            const searchRestro = filterList.filter((res)=>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              
+            )
+           setResList(searchRestro)
+            console.log(searchRestro)
+          }}
+          
+          >Search</button>
+        </div>
+        <button
+          className="bg-sky-300 p-3 rounded-3xl w-36"
+          onClick={() => {
+            const filterdList = filterList.filter(
+              (res) => res.info.avgRating > 4.5
+            );
+            setResList(filterdList);
+            console.log(filterdList);
+          }}
+        >
+          Top Restrurent
+        </button>
+      </div>
       <div className="res-container flex flex-wrap">
         {resList.map((restrurant) => (
-          <RestroCard key={restrurant.info.id} resDeta={restrurant}/>
-          ))}
+          <RestroCard key={restrurant.info.id} resDeta={restrurant} />
+        ))}
       </div>
     </div>
   );
