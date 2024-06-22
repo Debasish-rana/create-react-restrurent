@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestroCard from "./RestroCard";
 import Shimer from "./ShimerUi";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -12,7 +13,7 @@ const Body = () => {
 
   const resApi = async () => {
     const deta = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING "
     );
 
     const json = await deta.json();
@@ -69,7 +70,7 @@ const Body = () => {
       </div>
       <div className="res-container flex flex-wrap">
         {resList.map((restrurant) => (
-          <RestroCard key={restrurant.info.id} resDeta={restrurant} />
+          <Link key={restrurant.info.id} to={"/create-react-restrurent/restromenu/" + restrurant.info.id}><RestroCard key={restrurant.info.id} resDeta={restrurant} /></Link>
         ))}
       </div>
     </div>
