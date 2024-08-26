@@ -1,7 +1,11 @@
-
+import { useContext } from "react";
 import { CDN_URL } from "./util/url";
-const RestroCard = (props) => {
-const { resDeta } = props;
+import UserContext from "./util/UserContext";
+
+
+
+const RestroCard = ({resDeta}) => {
+//const { resDeta } = props;
 
 const {
   cloudinaryImageId,
@@ -13,6 +17,10 @@ const {
   sla,
 } = resDeta?.info
 
+let data = useContext(UserContext)
+//console.log(data);
+
+
   return (
     <div className="card-container w-[235px] h-auto bg-green-100 m-2 p-4 rounded-xl shadow-xl">
       <div className="res-card">
@@ -23,6 +31,7 @@ const {
         <h4>{locality} </h4>
         <h4>{costForTwo} </h4>
         <h4>{sla?.slaString} </h4>
+        <h4>User : {data.loggedInUser}</h4>
       </div>
     </div>
   );

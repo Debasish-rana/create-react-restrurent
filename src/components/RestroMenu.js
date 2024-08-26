@@ -5,12 +5,14 @@ import { useParams } from "react-router-dom";
 import RestroCatagory from "./RestroCatagory";
 import Nonveg from "./Nonveg";
 
-const RestroMenu = () => {
+const RestroMenu = ({ items }) => {
+  //console.log(items)
+
   const [restromenu, setRestromenu] = useState(null);
+  const [showItem, setShowItem] = useState(0);
 
   const { resId } = useParams();
   //console.log(resId)
-
 
   useEffect(() => {
     fetchRestroMenuDeta();
@@ -23,17 +25,20 @@ const RestroMenu = () => {
     console.log(json);
   };
 
-     //console.log(restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+  //console.log(restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
 
-     const catagories = restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=> c.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+  const catagories =
+    restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
-     console.log(catagories)
+  console.log(catagories);
 
-    // const nonvegItem = restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((nonveg)=>nonveg.card.card.itemCards.card.info.itemAttribute.vegClassifier === "NONVEG")
+  //const nonvegItem = restromenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((nonveg)=>nonveg.card.card.itemCards.card.info.itemAttribute.vegClassifier === "NONVEG")
 
-     //console.log(nonvegItem)
-      
-
+  //console.log(nonvegItem)
 
   if (restromenu === null) return <Shimer />;
 
@@ -94,8 +99,16 @@ const RestroMenu = () => {
           Area - <span className="font-thin">{areaName}</span>
         </h1>
       </div>
-     <Nonveg />
-     {catagories.map((catagory)=>(<RestroCatagory key={catagory.card.card.title} data={catagory.card.card}/>))}
+      
+      <Nonveg />
+      {catagories.map((catagory, index) => (
+        <RestroCatagory
+          key={catagory.card.card.title}
+          data={catagory.card.card}
+        showIndex={ index === showItem ? true : false }
+          setShowIndex={() => setShowItem(index)}
+        />
+      ))}
     </div>
   );
 };
